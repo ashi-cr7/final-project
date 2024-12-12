@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Packages</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Packages</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Duration</th>
+                <th>Destination</th>
+                <th>Price</th>
+                <th>Approved</th>
+                <th>Media</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for package in packages %}
+                <tr>
+                    <td>{{ package.description }}</td>
+                    <td>{{ package.duration }}</td>
+                    <td>{{ package.destination }}</td>
+                    <td>{{ package.price }}</td>
+                    <td>{{ package.approved }}</td>
+                    <td>{{ package.media }}</td>
+                    <td>
+                        <a href="{% url 'edit_package' package.pk %}">EDIT</a>
+                    </td>
+                    <td>
+                        <form action="{% url 'delt' package.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

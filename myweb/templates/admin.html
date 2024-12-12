@@ -1,0 +1,38 @@
+<!-- admin_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <h2>Users</h2>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.username }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Vendors</h2>
+    <ul>
+        {% for vendor in vendors %}
+            <li>{{ vendor.name }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Packages</h2>
+    <ul>
+        {% for package in packages %}
+            <li>
+                {{ package.name }}
+                {% if package.is_approved %}
+                    (Approved)
+                {% else %}
+                    (Pending Approval)
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

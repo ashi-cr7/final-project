@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>edit Package</title>
+</head>
+<body>
+    <h1>edit Package</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">save changes</button>
+    </form>
+</body>
+</html>
